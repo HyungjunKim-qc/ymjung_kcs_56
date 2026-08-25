@@ -281,13 +281,38 @@ a:focus-visible,.chip:focus-visible{outline:3px solid var(--orange);outline-offs
   transform:translate(-42%,-50%);border-style:solid;border-width:11px 0 11px 19px;
   border-color:transparent transparent transparent #fff}
 .facade:hover .play{background:#e12d2d}
+.v-lead{margin:0 0 12px;font-weight:700;color:var(--navy);font-size:clamp(16px,4.4vw,18px)}
 .vlink{margin:14px 0 0;font-size:14px}
+.clips{display:grid;grid-template-columns:1fr;gap:clamp(18px,3vw,26px);
+  margin-top:clamp(26px,4vw,38px)}
+@media (min-width:720px){.clips{grid-template-columns:1fr 1fr}}
+.clip h3{margin:12px 0 2px;font-weight:700;color:var(--navy);font-size:clamp(16px,4.4vw,18px)}
+.clip p{margin:0;color:var(--muted);font-size:14px}
+.frame.sm{border-radius:12px}
+.frame.sm .slot{color:rgba(255,255,255,.6);font-size:14px}
 .vlink a{color:var(--muted);text-decoration:none}
 .vlink a:hover{color:var(--navy);text-decoration:underline}
 .slot span{font-size:14px}
 
 /* ── PLEDGE INDEX ─────────────────────── */
 .pledge-top{scroll-margin-top:70px;padding:clamp(44px,7vw,80px) 0 clamp(6px,1.5vw,14px)}
+
+/* ── 첫 화면을 뷰포트 높이에 맞춤 (데스크톱) ── */
+@media (min-width:861px){
+  .hero-wrap{padding-top:min(18px,1.6svh)}
+  .head{padding:min(38px,4.4svh) clamp(22px,3.2vw,42px) min(18px,2svh)}
+  .name{font-size:min(62px,8.6svh)}
+  .eyebrow{font-size:min(16px,2.2svh)}
+  .letter{font-size:min(16.5px,2.3svh);line-height:1.56;
+    padding:min(20px,2.2svh) clamp(22px,3.2vw,42px) min(34px,3.6svh)}
+  .letter p{margin:0 0 min(.78em,1.5svh)}
+  .close{margin-top:min(1.1em,2svh) !important}
+  .stage{padding:min(38px,4.4svh) clamp(18px,2.4vw,28px) 0}
+  .slogan{font-size:min(44px,6.2svh);
+    padding:min(26px,3svh) clamp(18px,2.4vw,26px)}
+  .photo{padding-top:min(26px,2.6svh)}
+  .photo img{max-height:31svh}
+}
 </style>
 </head>
 <body>
@@ -297,6 +322,7 @@ a:focus-visible,.chip:focus-visible{outline:3px solid var(--orange);outline-offs
     <a class="brand" href="#home">정영미 <span>제56대 대한화학회 회장 후보</span></a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">메뉴</button>
     <nav class="menu" id="menu" aria-label="주요 메뉴">
+      <a href="#videos" data-t="videos">영상</a>
       <div class="drop" id="drop">
         <button class="drop-t" id="drop-t" aria-expanded="false">공약 <i>▾</i></button>
         <div class="drop-m">
@@ -369,16 +395,18 @@ a:focus-visible,.chip:focus-visible{outline:3px solid var(--orange);outline-offs
 
 
 <main class="shell">
-  <section class="video" id="declaration">
-    <h2>출마선언문</h2>
-    <p>제56대 대한화학회 회장 선거에 임하는 마음을 영상으로 전합니다.</p>
-    <div class="frame"><button class="facade" id="facade" data-id="kcT_RGmArrI"
+  <section class="video" id="videos">
+    <h2>직접 말씀드립니다</h2>
+    <p>제56대 대한화학회 회장 선거에 임하는 마음과 공약을 영상으로 전합니다.</p>
+    <h3 class="v-lead">출마선언문</h3>
+    <div class="frame"><button class="facade" data-id="kcT_RGmArrI"
         aria-label="출마선언문 영상 재생">
   <img src="https://i.ytimg.com/vi/kcT_RGmArrI/maxresdefault.jpg" alt="" aria-hidden="true"
        onerror="this.src='https://i.ytimg.com/vi/kcT_RGmArrI/hqdefault.jpg'">
   <span class="play" aria-hidden="true"></span>
 </button></div>
     <p class="vlink"><a href="https://youtu.be/kcT_RGmArrI" target="_blank" rel="noopener">재생되지 않으면 유튜브에서 바로 보기 →</a></p>
+    <div class="clips"><article class="clip"><div class="frame sm"><div class="slot"><span>준비 중</span></div></div><h3>생각을 잇다</h3><p>연구와 정책</p></article><article class="clip"><div class="frame sm"><div class="slot"><span>준비 중</span></div></div><h3>사람을 잇다</h3><p>산업·사회와 회원</p></article><article class="clip"><div class="frame sm"><div class="slot"><span>준비 중</span></div></div><h3>미래를 열다</h3><p>교육·인재와 AI</p></article><article class="clip"><div class="frame sm"><div class="slot"><span>준비 중</span></div></div><h3>여섯 번째 공약</h3><p>회원과 함께</p></article></div>
   </section>
 
   <section class="pledge-top" id="pledges">
@@ -704,17 +732,16 @@ a:focus-visible,.chip:focus-visible{outline:3px solid var(--orange);outline-offs
 
 <script>
 (function(){
-  var f=document.getElementById('facade');
-  if(f){
+  document.querySelectorAll('.facade').forEach(function(f){
     f.addEventListener('click',function(){
       var i=document.createElement('iframe');
       i.src='https://www.youtube-nocookie.com/embed/'+f.dataset.id+'?autoplay=1&rel=0';
-      i.title='출마선언문';
+      i.title=f.getAttribute('aria-label')||'영상';
       i.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
       i.setAttribute('allowfullscreen','');
       f.replaceWith(i);
     });
-  }
+  });
 })();
 (function(){
   var nav=document.getElementById('nav'),burger=document.getElementById('burger'),
@@ -752,7 +779,7 @@ a:focus-visible,.chip:focus-visible{outline:3px solid var(--orange);outline-offs
       }
     });
   },{rootMargin:'-45% 0px -50% 0px'});
-  ['pledges','service','intl','awards','research','career','edu'].forEach(function(id){
+  ['videos','pledges','service','intl','awards','research','career','edu'].forEach(function(id){
     var el=document.getElementById(id); if(el) io.observe(el);
   });
   document.querySelectorAll('.vision').forEach(function(s){ io.observe(s); });
