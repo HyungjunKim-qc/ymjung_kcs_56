@@ -78,7 +78,7 @@ main{background:#f4f6f8}
 .stage{grid-area:stage;background:#fff;display:flex;flex-direction:column;overflow:hidden;
   padding:clamp(24px,3.2vw,38px) clamp(18px,2.4vw,28px) 0}
 .slogan{margin:0;font-weight:800;font-size:clamp(34px,8.4vw,44px);line-height:1.16;color:#fff;
-  background:var(--navy);border-radius:12px;
+  background:var(--navy);border-radius:12px;text-align:center;
   padding:clamp(20px,2.6vw,26px) clamp(18px,2.4vw,26px)}
 .slogan span{display:block}
 .slogan i{font-style:normal}
@@ -706,7 +706,7 @@ a:focus-visible,.chip:focus-visible{outline:3px solid var(--orange);outline-offs
   <section class="profile" id="research">
     <div class="pblock">
       <h3>연구 실적</h3>
-      <div class="rows"><div class="row"><div class="yr">2023 – 현재</div><div class="txt">대학중점연구소 지원사업<small>강원대학교 분자과학융합기술연구소</small></div></div><div class="row"><div class="yr">2020 – 2026</div><div class="txt">기초과학연구역량강화사업<small>핵심연구지원센터, Core-facility</small></div></div><div class="row"><div class="yr">2009 – 2012, 2020 – 2023</div><div class="txt">기초연구실지원사업(BRL)</div></div><div class="row"><div class="yr"></div><div class="txt">SCI 논문 320편<small>Angew. Chem. Int. Ed., J. Am. Chem. Soc., Adv. Mater., Adv. Funct. Mater., Sens. Actuators B: Chem., Biosens. Bioelectron., Anal. Chem. 등</small></div></div></div>
+      <div class="rows"><div class="row"><div class="yr">2023 – 현재</div><div class="txt">대학중점연구소 지원사업<small>강원대학교 분자과학융합기술연구소</small></div></div><div class="row"><div class="yr">2020 – 2026</div><div class="txt">기초과학연구역량강화사업<small>핵심연구지원센터, Core-facility</small></div></div><div class="row"><div class="yr">2009 – 2012, 2020 – 2023</div><div class="txt">기초연구실지원사업(BRL)</div></div><div class="row"><div class="yr"></div><div class="txt">SCI 논문 330편<small>Angew. Chem. Int. Ed., J. Am. Chem. Soc., Adv. Mater., Adv. Funct. Mater., Sens. Actuators B: Chem., Biosens. Bioelectron., Anal. Chem. 등</small></div></div></div>
     </div>
   </section>
 
@@ -738,7 +738,7 @@ a:focus-visible,.chip:focus-visible{outline:3px solid var(--orange);outline-offs
   document.querySelectorAll('.facade').forEach(function(f){
     f.addEventListener('click',function(){
       var i=document.createElement('iframe');
-      i.src='https://www.youtube-nocookie.com/embed/'+f.dataset.id+'?autoplay=1&rel=0';
+      i.src='https://www.youtube-nocookie.com/embed/'+f.dataset.id+'?autoplay=1&rel=0&cc_load_policy=0&iv_load_policy=3';
       i.title=f.getAttribute('aria-label')||'영상';
       i.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
       i.setAttribute('allowfullscreen','');
