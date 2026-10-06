@@ -924,8 +924,8 @@ a:focus-visible,.chip:focus-visible{outline:3px solid var(--orange);outline-offs
             <button id="vm-restart" type="button">처음부터</button>
             <div class="vm-speed" role="group" aria-label="재생 속도"><button type="button" data-s="1" aria-pressed="true">1배</button><button type="button" data-s="2" aria-pressed="false">2배</button><button type="button" data-s="4" aria-pressed="false">4배</button></div>
           </div>
-          <div class="vm-legend"><span><i style="background:var(--orange)"></i>지금 방문 중</span><span><i style="background:var(--cyan)"></i>방문한 곳</span><span><i style="background:#d9a21a"></i>분과 하계심포지엄</span></div>
-          <p class="vm-foot">모든 방문과 세미나는 사전 초청으로 이루어졌습니다. 지부·분과 심포지엄과 KBSI는 개최 도시 기준으로 표시했습니다.</p>
+          <div class="vm-legend"><span><i style="background:var(--orange)"></i>지금 방문 중</span><span><i style="background:var(--cyan)"></i>방문한 곳</span><span><i style="background:#d9a21a"></i>분과회 및 지부</span></div>
+          <p class="vm-foot">모든 방문과 세미나는 사전 초청으로 이루어졌습니다. 지부·분과 심포지엄은 개최 도시 기준으로 표시했습니다.</p>
           <div class="vm-list">
             <h3>찾아간 곳 <b>64</b></h3>
             <h4>대학·연구기관 <b>55</b></h4>
@@ -1078,7 +1078,8 @@ DATA.gu.forEach(u=>{const g=el('g',{},G('vgul'));el('text',{'text-anchor':'middl
 const cur=G('vcur'),lbl=G('vlbl'),trails=G('vtrails'),dots=G('vdotsg');
 const curP={g:cur,x:0,y:0};scaled.push(curP);
 const lblG=el('g',{},lbl),lblT=el('text',{},lblG),lblP={g:lblG,x:0,y:0};scaled.push(lblP);
-const APPROX=new Set(['광주·전남·전북지부','강원지부 심포지엄','영남지부 심포지엄','KBSI','KBSI 서울센터']);
+const APPROX=new Set(['광주·전남·전북지부','강원지부 심포지엄','영남지부 심포지엄']);
+const EV=s=>s.sym||s.n.includes('지부');
 const WD='일월화수목금토';
 const fmtDate=s=>{const w=WD[new Date(2026,s.m-1,s.d).getDay()];return s.d2?`${s.m}월 ${s.d}–${s.d2}일`:`${s.m}월 ${s.d}일 (${w})`};
 const doy=(m,d)=>(Date.UTC(2026,m-1,d)-Date.UTC(2026,0,1))/864e5;
@@ -1087,7 +1088,7 @@ const LOC=S.filter(s=>s.x!=null).length;$('tot').textContent=LOC;
 // timeline
 const tl=$('tl');
 for(let m=4;m<=10;m++){const p=pct(m,1);const t=document.createElement('div');t.className='tick';t.style.left=p+'%';tl.appendChild(t);const l=document.createElement('div');l.className='m';l.style.left=pct(m,15)+'%';l.textContent=m+'월';tl.appendChild(l)}
-const tlDots=S.map(s=>{const d=document.createElement('div');d.className='v'+(s.sym?' e':'');d.style.left=pct(s.m,s.d)+'%';d.style.display='none';tl.insertBefore(d,$('knob'));return d});
+const tlDots=S.map(s=>{const d=document.createElement('div');d.className='v'+(EV(s)?' e':'');d.style.left=pct(s.m,s.d)+'%';d.style.display='none';tl.insertBefore(d,$('knob'));return d});
 let W=1,H=1,NAT,CAP,SEO,cam,mode='nat';
 const fit=(b,pad)=>{let[x0,y0,x1,y1]=b,w=x1-x0,h=y1-y0;x0-=w*pad;y0-=h*pad;w*=1+2*pad;h*=1+2*pad;const a=W/H;if(w/h>a){const nh=w/a;y0-=(nh-h)/2;h=nh}else{const nw=h*a;x0-=(nw-w)/2;w=nw}return{x:x0,y:y0,w,h}};
 const V=m=>m==='cap'?CAP:m==='seoul'?SEO:NAT;
@@ -1095,7 +1096,7 @@ function size(){const r=svg.getBoundingClientRect();W=r.width||1;H=r.height||1;N
 function render(){svg.setAttribute('viewBox',`${cam.x} ${cam.y} ${cam.w} ${cam.h}`);svg.classList.toggle('cap',cam.w<NAT.w*.5);svg.classList.toggle('seo',cam.w<NAT.w*.14);const k=cam.w/W;for(const p of scaled)p.g.setAttribute('transform',`translate(${p.x} ${p.y}) scale(${k})`)}
 // state
 const vdots=new Map();let cnt=0,camAnim=false,live=null;
-function markVisited(s,i){cnt++;$('cnt').textContent=cnt;tlDots[i].style.display='';const key=s.x+','+s.y;if(!vdots.has(key)){const g=el('g',{class:'vpt'+(s.sym?' vsym':'')},dots);el('circle',{r:4.6},g);const p={g,x:s.x,y:s.y};scaled.push(p);vdots.set(key,p);p.g.setAttribute('transform',`translate(${s.x} ${s.y}) scale(${cam.w/W})`)}}
+function markVisited(s,i){cnt++;$('cnt').textContent=cnt;tlDots[i].style.display='';const key=s.x+','+s.y;if(!vdots.has(key)){const g=el('g',{class:'vpt'+(EV(s)?' vsym':'')},dots);el('circle',{r:4.6},g);const p={g,x:s.x,y:s.y};scaled.push(p);vdots.set(key,p);p.g.setAttribute('transform',`translate(${s.x} ${s.y}) scale(${cam.w/W})`)}}
 function showLabel(s){if(!s){lblG.style.display='none';return}lblG.style.display='';lblP.x=s.x;lblP.y=s.y;const sx=(s.x-cam.x)/cam.w*W,right=sx>W*.6;lblT.setAttribute('text-anchor',right?'end':'start');lblT.setAttribute('x',right?-13:13);lblT.setAttribute('y',-10);lblT.textContent=s.n;render()}
 function setPanel(s,i,t){$('date').textContent=fmtDate(s);$('place').textContent=s.n;$('sub').textContent=s.city?s.city+' 개최':APPROX.has(s.n)?'개최 지역 기준 위치':'';knobTo(pct(s.m,s.d))}
 function knobTo(p){$('knob').style.left=p+'%';$('fill').style.width=p+'%'}
