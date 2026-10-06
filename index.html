@@ -274,7 +274,11 @@ main{background:#f4f6f8}
 .vmap .vm-legend span{display:inline-flex;align-items:center;gap:6px}
 .vmap .vm-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .vmap .vm-list{margin-top:clamp(18px,2.8vw,24px);padding-top:clamp(16px,2.4vw,20px);border-top:1px solid var(--line)}
-.vmap .vm-list h3{margin:0 0 10px;font-weight:800;color:var(--navy);font-size:15px}
+.vmap .vm-list h3{margin:0 0 12px;font-weight:800;color:var(--navy);font-size:15px}
+.vmap .vm-list h3 b{color:var(--orange-deep);margin-left:4px}
+.vmap .vm-list h4{margin:0 0 8px;font-weight:700;color:var(--muted);font-size:13px;letter-spacing:.02em}
+.vmap .vm-list h4 b{color:var(--navy);margin-left:3px}
+.vmap .vm-list dl+h4{margin-top:16px}
 .vmap .vm-list dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:7px 14px}
 .vmap .vm-list dt{font-weight:700;color:var(--navy);font-size:13.5px;line-height:1.65;white-space:nowrap}
 .vmap .vm-list dt b{color:var(--orange-deep);margin-left:5px;font-variant-numeric:tabular-nums}
@@ -921,13 +925,19 @@ a:focus-visible,.chip:focus-visible{outline:3px solid var(--orange);outline-offs
           <div class="vm-legend"><span><i style="background:var(--orange)"></i>지금 방문 중</span><span><i style="background:var(--cyan)"></i>방문한 곳</span><span><i style="background:#d9a21a"></i>분과 하계심포지엄</span></div>
           <p class="vm-foot">모든 방문과 세미나는 사전 초청으로 이루어졌습니다. 지부·분과 심포지엄과 KBSI는 개최 도시 기준으로 표시했습니다.</p>
           <div class="vm-list">
-            <h3>찾아간 곳</h3>
+            <h3>찾아간 곳 <b>64</b></h3>
+            <h4>대학·연구기관 <b>55</b></h4>
             <dl>
               <dt>수도권<b>26</b></dt><dd><span>이화여대</span><span>숙명여대</span><span>경희대 국제캠퍼스</span><span>인하대</span><span>경희대</span><span>인천대</span><span>연세대</span><span>한양대</span><span>KIST</span><span>고려대</span><span>서울시립대</span><span>아주대</span><span>서울대</span><span>KBSI 서울센터</span><span>성신여대</span><span>국민대</span><span>성균관대 자연과학캠퍼스</span><span>가천대</span><span>서울여대</span><span>중앙대</span><span>광운대</span><span>덕성여대</span><span>숭실대</span><span>동국대</span><span>한양대 ERICA</span><span>경기대</span></dd>
-              <dt>영남<b>19</b></dt><dd><span>경북대<small> 2회</small></span><span>DGIST</span><span>계명대</span><span>영남대</span><span>대구가톨릭대</span><span>대구대</span><span>경상국립대</span><span>창원대</span><span>물리화학분과 하계심포지엄(부산)</span><span>유기화학분과 하계심포지엄(부산)</span><span>한국화학연구원 울산</span><span>울산대</span><span>UNIST</span><span>부경대</span><span>부산대</span><span>재료화학분과 하계심포지엄(부산)</span><span>영남지부 심포지엄</span><span>포스텍</span></dd>
+              <dt>영남<b>14</b></dt><dd><span>경북대</span><span>DGIST</span><span>계명대</span><span>영남대</span><span>대구가톨릭대</span><span>대구대</span><span>경상국립대</span><span>창원대</span><span>한국화학연구원 울산</span><span>울산대</span><span>UNIST</span><span>부경대</span><span>부산대</span><span>포스텍</span></dd>
               <dt>충청<b>8</b></dt><dd><span>충북대</span><span>고려대 세종캠퍼스</span><span>충남대</span><span>KAIST</span><span>한국화학연구원</span><span>KBSI</span><span>공주대</span><span>한남대</span></dd>
-              <dt>호남<b>6</b></dt><dd><span>전남대</span><span>광주·전남·전북지부</span><span>순천대</span><span>조선대</span><span>GIST</span><span>전북대</span></dd>
-              <dt>강원<b>6</b></dt><dd><span>강원지부 심포지엄</span><span>생명화학분과 하계심포지엄(삼척)</span><span>분석·전기화학분과 하계심포지엄(강릉)</span><span>고분자화학분과 하계심포지엄(평창)</span><span>한림대</span><span>연세대 미래캠퍼스</span></dd>
+              <dt>호남<b>5</b></dt><dd><span>전남대</span><span>순천대</span><span>조선대</span><span>GIST</span><span>전북대</span></dd>
+              <dt>강원<b>2</b></dt><dd><span>한림대</span><span>연세대 미래캠퍼스</span></dd>
+            </dl>
+            <h4>분과회·지부 <b>9</b></h4>
+            <dl>
+              <dt>분과회<b>6</b></dt><dd><span>물리화학분과(부산)</span><span>생명화학분과(삼척)</span><span>분석·전기화학분과(강릉)</span><span>고분자화학분과(평창)</span><span>유기화학분과(부산)</span><span>재료화학분과(부산)</span></dd>
+              <dt>지부<b>3</b></dt><dd><span>광주·전남·전북지부</span><span>강원지부</span><span>영남지부</span></dd>
             </dl>
           </div>
         </div>
@@ -1103,7 +1113,7 @@ function start(p){const s=S[p.i];
  else if(p.t==='move'){p.from={...cam};p.T=V(p.to);camAnim=true;const wmax=Math.max(p.from.w,p.T.w),d=Math.hypot(p.b.x-p.a.x,p.b.y-p.a.y)/wmax*W,r=p.T.w/p.from.w;p.dur=Math.max(700,Math.min(1900,550+d*2.8));if(r<.67||r>1.5)p.dur=Math.max(p.dur,2100);p.c=ctrl(p.a,p.b);live=el('path',{class:'vtrail vlive'},trails);showLabel(null);setPanel(s,p.i)}
  else if(p.t==='dwell'){markVisited(s,p.i);showLabel(s)}
  else if(p.t==='event'){const c=$('chip');c.innerHTML=`<b>${fmtDate(s)}</b>${s.n} 참석`;c.classList.add('on');setPanel(s,p.i)}
- else if(p.t==='end'){showLabel(null);$('date').textContent='4월–10월';$('place').textContent=`전국 ${LOC}곳을 찾아갔습니다`;{const ns=S.filter(s=>s.sym).length;$('sub').textContent=`대학·연구기관 방문 ${LOC-ns}회와 분과 하계심포지엄 ${ns}회`}knobTo(100);playing=false;$('play').textContent='다시 보기'}
+ else if(p.t==='end'){showLabel(null);$('date').textContent='4월–10월';$('place').textContent=`전국 ${new Set(S.map(s=>s.n)).size}곳을 찾아갔습니다`;{const U=[...new Map(S.map(s=>[s.n,s])).values()],ns=U.filter(s=>s.sym).length,nb=U.filter(s=>!s.sym&&s.n.includes('지부')).length;$('sub').textContent=`대학·연구기관 ${U.length-ns-nb}곳 · 분과회 ${ns} · 지부 ${nb} (총 ${LOC}회 방문)`}knobTo(100);playing=false;$('play').textContent='다시 보기'}
 }
 function update(p,t){
  if(p.t==='appear'){cur.style.opacity=t}
