@@ -221,9 +221,6 @@ main{background:#f4f6f8}
 .vmap .vgu path{fill:none;stroke:#bfab84;stroke-width:.9;vector-effect:non-scaling-stroke}
 .vmap svg.seo .vgu path{stroke-width:1.2}
 .vmap .vhan path{fill:none;stroke:#a9c3dd;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
-.vmap .vgul text{font-size:11px;fill:#9a8866;font-weight:500;paint-order:stroke;
-  stroke:#e9dec7;stroke-width:3px}
-.vmap svg:not(.seo) .vgul{display:none}
 .vmap .vrg path{fill:none;stroke:#e0d3b6;stroke-width:.6;vector-effect:non-scaling-stroke}
 .vmap svg.rg .vrg path{stroke:#c9b58f;stroke-width:.8}
 .vmap .vtrail{fill:none;stroke:var(--orange);stroke-width:1.6;stroke-opacity:.5;
@@ -231,7 +228,7 @@ main{background:#f4f6f8}
 .vmap .vtrail.vlive{stroke-opacity:1;stroke-width:2.4}
 .vmap .vcity text{font-size:11.5px;fill:#8e7e5f;font-weight:500;paint-order:stroke;
   stroke:#efe6d3;stroke-width:3px;letter-spacing:.02em}
-.vmap svg.cap .vcity.xs,.vmap svg:not(.cap) .vcity.c{display:none}
+.vmap svg:not(.cap) .vcity.c{display:none}
 .vmap .vpt circle{fill:var(--cyan);stroke:var(--navy-deep);stroke-width:1.4}
 .vmap .vpt.vsym circle{fill:#f5cf5e}
 .vmap .vcur .vcore{fill:var(--orange);stroke:#fff;stroke-width:2.5}
@@ -1077,7 +1074,7 @@ DATA.han.forEach(d=>el('path',{d},G('vhan')));
 el('path',{d:DATA.rg},G('vrg'));
 const scaled=[];
 DATA.cities.forEach(c=>{const g=el('g',{class:'vcity '+c.z+(c.n==='서울'?' xs':'')},G('vcities'));el('text',{'text-anchor':'middle',y:19},g).textContent=c.n;scaled.push({g,x:c.x,y:c.y})});
-DATA.gu.forEach(u=>{const g=el('g',{},G('vgul'));el('text',{'text-anchor':'middle',y:4},g).textContent=u.n;scaled.push({g,x:u.c[0],y:u.c[1]})});
+
 const cur=G('vcur'),lbl=G('vlbl'),trails=G('vtrails'),dots=G('vdotsg');
 const curP={g:cur,x:0,y:0};scaled.push(curP);
 const lblG=el('g',{},lbl),lblT=el('text',{},lblG),lblP={g:lblG,x:0,y:0};scaled.push(lblP);
